@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head th:include="~{../static/html/meta.html}"></head>
+<body>
+    <header th:include="~{../static/html/header.html}"></header>
+    <section class="container">
+        <h2>Tabla de Pacientes</h2>
+        <table class="table">
+            <thead class="table-header">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>N° de Sala</th>
+                    <th>N° de Cama</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="paciente : ${pacientes}">
+                    <td th:text="${paciente.id}"></td>
+                    <td th:text="${paciente.name}"></td>
+                    <td th:text="${paciente.surname}"></td>
+                    <td th:text="${paciente.numRoom}"></td>
+                    <td th:text="${paciente.numBed}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="container">
+
+
+    </section>
+        <footer th:include="~{../static/html/footer.html}"></footer>
+
+
+
+</body>
+</html>
