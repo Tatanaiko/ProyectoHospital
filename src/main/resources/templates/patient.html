@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="~{../static/html/meta.html}"></head>
 <body>
     <header th:include="~{../static/html/header.html}"></header>
@@ -7,32 +7,38 @@
         <h2>Tabla de Pacientes</h2>
         <table class="table">
             <thead class="table-header">
-                <tr>
+                <tr class="text-center">
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>N° de Sala</th>
                     <th>N° de Cama</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 <tr th:each="paciente : ${pacientes}">
                     <td th:text="${paciente.id}"></td>
                     <td th:text="${paciente.name}"></td>
                     <td th:text="${paciente.surname}"></td>
                     <td th:text="${paciente.numRoom}"></td>
                     <td th:text="${paciente.numBed}"></td>
+                    <td>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a class="btn btn-success" th:href="@{/patient/edit/{id}(id=${paciente.id})}" role="button">Editar</a>
+                            <a class="btn btn-danger" th:href="@{/patient/delete/{id}(id=${paciente.id})}" role="button">Borrar</a>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
-    </section>
-    <section class="container">
-
-
-    </section>
-        <footer th:include="~{../static/html/footer.html}"></footer>
-
-
-
-</body>
+        <div>
+            <a class="btn btn-primary" th:href="@{/patient/newPatient}" role="button">Ingresar nuevo Paciente</a>
+        </div>
+        </section>
+        <br>
+        <section class="container">
+            <footer th:include="~{../static/html/footer.html}"></footer>
+        </section>
+    </body>
 </html>

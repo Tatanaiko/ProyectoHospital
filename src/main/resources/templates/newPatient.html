@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="~{../static/html/meta.html}"></head>
+
+<body>
+<header th:include="~{../static/html/header.html}"></header>
+    <section class ="container">
+        <hr>
+        <h2 th:text="${patient.id != null} ? 'Editar Paciente' : 'Ingresar nuevo Paciente'"></h2>
+        <div class="container">
+            <form th:action="@{/patient/savePatient}" th:object="${patient}" method="post">
+                <input type="hidden" th:field="*{id}" />
+                <div class="row">
+                    <div class="col">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Nombre" aria-label="First name" required>
+                    </div>
+                    <div class="col">
+                        <label for="surname" class="form-label">Apellido</label>
+                        <input type="text" th:field="*{surname}" class="form-control" id="surname" placeholder="Apellido" aria-label="Last name" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="numRoom" class="form-label">N° de Habitación</label>
+                        <input type="text" th:field="*{numRoom}" class="form-control" id="numRoom" placeholder="N° habitación" aria-label="Num Room" required>
+                    </div>
+                    <div class="col">
+                        <label for="numBed" class="form-label">N° de Cama</label>
+                        <input type="text" th:field="*{numBed}" class="form-control" id="numBed" placeholder="N° de cama" aria-label="Num Bed" required>
+                    </div>
+                </div>
+                <br>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="container">
+        <footer th:include="~{../static/html/footer.html}"></footer>
+    </section>
+</body>
+</html>
